@@ -8,9 +8,10 @@ namespace Sweepstakes
 {
     class Simulation
     {
+        public MarketingFirm marketingFirm;
         public void CreateMarketingFirm()
         {
-
+            marketingFirm = new MarketingFirm(SweepstakesManagerFactory.CreateSweepstakesManager());
         }
     }
 }
