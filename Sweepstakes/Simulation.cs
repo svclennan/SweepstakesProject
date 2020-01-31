@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    interface ISweepstakesManager
+    class Simulation
     {
-        void InsertSweepstakes(Sweepstakes sweepstakes);
-        Sweepstakes GetSweepstakes();
+        public void CreateMarketingFirm()
+        {
+
+        }
     }
 }
