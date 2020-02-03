@@ -18,10 +18,10 @@ namespace Sweepstakes
         {
             marketingFirm.CreateSweepstakes();
         }
-        public string PickWinner()
+        public void PickWinner()
         {
             sweep = marketingFirm._manager.GetSweepstakes();
-            return sweep.PickWinner().ToString();
+            sweep.PrintContestantInfo(sweep.PickWinner());
         }
         public void NotifyWinners()
         {

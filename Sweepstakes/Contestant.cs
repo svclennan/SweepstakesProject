@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MimeKit;
+using MailKit;
+using MailKit.Net.Smtp;
 
 namespace Sweepstakes
 {
@@ -35,14 +38,36 @@ namespace Sweepstakes
         }
         public void NotifyContestants()
         {
+            //var message = new MimeMessage();
             if (winner)
             {
+                //message.From.Add(new MailboxAddress("Marketing Firm", "donotrespond@gmail.com"));
+                //message.To.Add(new MailboxAddress("Valued Contestant", emailAddress));
+                //message.Subject = "Congratulations!";
+                //message.Body = new TextPart("plain")
+                //{
+                //    Text = $"Congratulations {firstName} {lastName}, you won our sweepstakes!!!"
+                //};
                 UserInterface<string>.Print($"Congratulations {firstName} {lastName}! You won the sweepstakes!");
             }
             else
             {
+                //message.From.Add(new MailboxAddress("Marketing Firm", "donotrespond@gmail.com"));
+                //message.To.Add(new MailboxAddress("Valued Contestant", emailAddress));
+                //message.Subject = "Sorry";
+                //message.Body = new TextPart("plain")
+                //{
+                //    Text = $"Sorry {firstName} {lastName}, you lost our sweepstakes. Try again next time."
+                //};
                 UserInterface<string>.Print($"Sorry {firstName} {lastName}. You lost. Try again next time!");
             }
+            //using (var client = new SmtpClient())
+            //{
+            //    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            //    client.Connect("smtp.yahoo.com", 0, false);
+            //    client.Send(message);
+            //    client.Disconnect(true);
+            //}
         }
     }
 }
