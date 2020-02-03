@@ -9,6 +9,7 @@ namespace Sweepstakes
     class Simulation
     {
         public MarketingFirm marketingFirm;
+        public Sweepstakes sweep;
         public void CreateMarketingFirm()
         {
             marketingFirm = new MarketingFirm(SweepstakesManagerFactory.CreateSweepstakesManager());
@@ -19,13 +20,22 @@ namespace Sweepstakes
         }
         public string PickWinner()
         {
-            return marketingFirm._manager.GetSweepstakes().PickWinner().ToString();
+            sweep = marketingFirm._manager.GetSweepstakes();
+            return sweep.PickWinner().ToString();
+        }
+        public void NotifyWinners()
+        {
+            foreach (KeyValuePair<int,Contestant> contestant in sweep.contestants)
+            {
+                contestant.Value.NotifyContestants();
+            }
         }
         public void RunGame()
         {
             CreateMarketingFirm();
             CreateSweepStakes();
-            UserInterface<string>.Print(PickWinner() + " won.");
+            PickWinner();
+            NotifyWinners();
         }
     }
 }

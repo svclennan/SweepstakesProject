@@ -8,7 +8,7 @@ namespace Sweepstakes
 {
     class Sweepstakes
     {
-        private Dictionary<int, Contestant> contestants;
+        public Dictionary<int, Contestant> contestants;
         private string name;
         Random rand;
         public string Name { get => name; set => name = value; }
@@ -25,7 +25,9 @@ namespace Sweepstakes
         }
         public Contestant PickWinner()
         {
-            return contestants[rand.Next(contestants.Count)];
+            Contestant winner = contestants[rand.Next(contestants.Count)];
+            winner.winner = true;
+            return winner;
         }
         public void PrintContestantInfo(Contestant contestant)
         {

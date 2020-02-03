@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class Contestant
+    class Contestant : IObserver
     {
         public string firstName, lastName, emailAddress;
         public int registrationNumber;
+        public bool winner;
 
         public Contestant(string firstName, string lastName, string emailAddress, int registrationNumber)
         {
@@ -17,6 +18,7 @@ namespace Sweepstakes
             this.lastName = lastName;
             this.emailAddress = emailAddress;
             this.registrationNumber = registrationNumber;
+            this.winner = false;
         }
 
         public override string ToString()
@@ -30,6 +32,17 @@ namespace Sweepstakes
             sb.Append(", ");
             sb.Append(registrationNumber);
             return sb.ToString();
+        }
+        public void NotifyContestants()
+        {
+            if (winner)
+            {
+                UserInterface<string>.Print($"Congratulations {firstName} {lastName}! You won the sweepstakes!");
+            }
+            else
+            {
+                UserInterface<string>.Print($"Sorry {firstName} {lastName}. You lost. Try again next time!");
+            }
         }
     }
 }
