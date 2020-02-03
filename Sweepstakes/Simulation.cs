@@ -25,7 +25,7 @@ namespace Sweepstakes
         {
             CreateMarketingFirm();
             CreateSweepStakes();
-            UserInterface<string>.Print(PickWinner());
+            UserInterface<string>.Print(PickWinner() + " won.");
         }
     }
 }
